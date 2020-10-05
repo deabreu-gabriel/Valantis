@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using Valantis.Catalogo.Application;
 using Valantis.Catalogo.Application.Interfaces;
 using Valantis.Catalogo.Application.ViewModels;
 

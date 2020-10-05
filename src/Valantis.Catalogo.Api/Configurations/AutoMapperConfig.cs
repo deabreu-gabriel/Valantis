@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Valantis.Catalogo.Application;
 using Valantis.Catalogo.Application.AutoMapper;
 
 namespace Valantis.Catalogo.Api.Configurations

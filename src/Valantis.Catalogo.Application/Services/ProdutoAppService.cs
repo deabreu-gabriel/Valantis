@@ -1,9 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
-using AutoMapper;
 using Valantis.Catalogo.Application.Interfaces;
 using Valantis.Catalogo.Application.ViewModels;
-using Valantis.Catalogo.Domain;
 using Valantis.Catalogo.Domain.Interfaces;
 
 namespace Valantis.Catalogo.Application.Services
