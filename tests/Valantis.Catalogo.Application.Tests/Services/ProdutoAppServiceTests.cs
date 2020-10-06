@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Moq;
 using Moq.AutoMock;
 using Valantis.Catalogo.Application.AutoMapper;
 using Valantis.Catalogo.Application.Services;
+using Valantis.Catalogo.Application.ViewModels;
+using Valantis.Catalogo.Domain.Commands.ProdutoCommands;
 using Valantis.Catalogo.Domain.Entities;
 using Valantis.Catalogo.Domain.Interfaces;
+using Valantis.Catalogo.Domain.Mediator;
+using Valantis.Catalogo.Domain.Messaging;
 using Xunit;
 
 namespace Valantis.Catalogo.Application.Tests.Services
@@ -21,10 +26,16 @@ namespace Valantis.Catalogo.Application.Tests.Services
         {
             _mocker = new AutoMocker();
 
-            var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new DomainToViewModelMappingProfile())).CreateMapper();
+            var mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainToViewModelMappingProfile());
+                cfg.AddProfile(new ViewModelToDomainMappingProfile());
+            }).CreateMapper();
+            
             var produtoRepository = _mocker.GetMock<IProdutoRepository>();
+            var mediatorHandler = _mocker.GetMock<IMediatorHandler>();
 
-            _produtoAppService = new ProdutoAppService(mapper, produtoRepository.Object); 
+            _produtoAppService = new ProdutoAppService(mapper, mediatorHandler.Object, produtoRepository.Object); 
         }
 
         [Fact(DisplayName = "ObterTodos deve obter e mapear produtos")]
@@ -49,7 +60,6 @@ namespace Valantis.Catalogo.Application.Tests.Services
             Assert.Equal(3, result.Count());
         }
 
-
         [Fact(DisplayName = "ObterPorId deve obter e mapear produto")]
         [Trait("Categoria", "Catálogo - ProdutoAppService")]
         public void ObterPorId_DeveObterEMapearProduto()
@@ -64,9 +74,50 @@ namespace Valantis.Catalogo.Application.Tests.Services
 
             // Assert
             _mocker.GetMock<IProdutoRepository>().Verify(r => r.ObterPorId(produto.Id), Times.Once);
+
             Assert.NotNull(result);
             Assert.Equal(produto.Id, result.Id);
             Assert.Equal(produto.Nome, result.Nome);
+        }
+
+        [Fact(DisplayName = "Adicionar deve publicar notificação quando nome estiver vazio")]
+        [Trait("Categoria", "Catálogo - ProdutoAppService")]
+        public async Task Adicionar_DevePublicarDomainNotification_QuandoNomeVazio()
+        {
+            // Arrange
+            var produtoViewModel = new ProdutoViewModel
+            {
+                Nome = ""
+            };
+
+            // Act
+            await _produtoAppService.Adicionar(produtoViewModel);
+
+            // Assert
+            _mocker.GetMock<IMediatorHandler>().Verify(r => 
+                r.PublicarDomainNotification(
+                    It.Is<DomainNotification>(dm => dm.Value == "Por favor, tenha certeza que informou o Nome.")),
+                    Times.Once);
+        }
+
+        [Fact(DisplayName = "Adicionar deve enviar comando quando estiver valido")]
+        [Trait("Categoria", "Catálogo - ProdutoAppService")]
+        public async Task Adicionar_DeveEnviarCommand_QuandoEstiverValido()
+        {
+            // Arrange
+            var produtoViewModel = new ProdutoViewModel
+            {
+                Nome = "Produto 1"
+            };
+
+            // Act
+            await _produtoAppService.Adicionar(produtoViewModel);
+
+            // Assert
+            _mocker.GetMock<IMediatorHandler>().Verify(r => 
+                r.EnviarCommand(
+                    It.Is<AdicionarProdutoCommand>(c => c.Nome == produtoViewModel.Nome)), 
+                    Times.Once);
         }
     }
 }

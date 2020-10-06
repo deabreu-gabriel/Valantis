@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,8 @@ namespace Valantis.Catalogo.Api
             services.AddControllers();
 
             services.AddAutoMapperConfiguration();
+
+            services.AddMediatR(typeof(Startup));
 
             services.AddDependencyInjectionConfiguration();
         }

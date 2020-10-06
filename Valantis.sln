@@ -7,17 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogo", "Catalogo", "{8B1CCAC2-F43B-4FA9-B264-CE4BF7B20C14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valantis.Catalogo.Domain", "src\Valantis.Catalogo.Domain\Valantis.Catalogo.Domain.csproj", "{BE96C47A-CBCA-4307-B9B6-DA9AE97B5F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valantis.Catalogo.Domain", "src\Valantis.Catalogo.Domain\Valantis.Catalogo.Domain.csproj", "{BE96C47A-CBCA-4307-B9B6-DA9AE97B5F56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valantis.Catalogo.Infra.Data", "src\Valantis.Catalogo.Infra.Data\Valantis.Catalogo.Infra.Data.csproj", "{EDD56964-2531-4313-A0EF-BD85FA2BA415}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valantis.Catalogo.Infra.Data", "src\Valantis.Catalogo.Infra.Data\Valantis.Catalogo.Infra.Data.csproj", "{EDD56964-2531-4313-A0EF-BD85FA2BA415}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valantis.Catalogo.Application", "src\Valantis.Catalogo.Application\Valantis.Catalogo.Application.csproj", "{4232F1CA-B72A-48B1-89C3-7C407F91B273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valantis.Catalogo.Application", "src\Valantis.Catalogo.Application\Valantis.Catalogo.Application.csproj", "{4232F1CA-B72A-48B1-89C3-7C407F91B273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valantis.Catalogo.Api", "src\Valantis.Catalogo.Api\Valantis.Catalogo.Api.csproj", "{322B7799-84D9-4B56-8905-D8183F748DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valantis.Catalogo.Api", "src\Valantis.Catalogo.Api\Valantis.Catalogo.Api.csproj", "{322B7799-84D9-4B56-8905-D8183F748DA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valantis.Catalogo.Infra.CrossCutting.IoC", "src\Valantis.Catalogo.Infra.CrossCutting.IoC\Valantis.Catalogo.Infra.CrossCutting.IoC.csproj", "{E9A00726-DF98-43EA-A827-E5557B2B7198}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valantis.Catalogo.Infra.CrossCutting.IoC", "src\Valantis.Catalogo.Infra.CrossCutting.IoC\Valantis.Catalogo.Infra.CrossCutting.IoC.csproj", "{E9A00726-DF98-43EA-A827-E5557B2B7198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valantis.Catalogo.Application.Tests", "tests\Valantis.Catalogo.Application.Tests\Valantis.Catalogo.Application.Tests.csproj", "{362B91E4-45C8-4284-99AB-9765A1182DC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valantis.Catalogo.Application.Tests", "tests\Valantis.Catalogo.Application.Tests\Valantis.Catalogo.Application.Tests.csproj", "{362B91E4-45C8-4284-99AB-9765A1182DC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cadastros", "Cadastros", "{779C9ACE-D5BE-4496-9303-0D9664B484C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +115,7 @@ Global
 		{322B7799-84D9-4B56-8905-D8183F748DA6} = {8B1CCAC2-F43B-4FA9-B264-CE4BF7B20C14}
 		{E9A00726-DF98-43EA-A827-E5557B2B7198} = {8B1CCAC2-F43B-4FA9-B264-CE4BF7B20C14}
 		{362B91E4-45C8-4284-99AB-9765A1182DC7} = {8B1CCAC2-F43B-4FA9-B264-CE4BF7B20C14}
+		{779C9ACE-D5BE-4496-9303-0D9664B484C9} = {CA719302-9A5A-4333-9834-00CD9075761F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {85D69F11-8969-4BF0-A119-6D01F0B83624}

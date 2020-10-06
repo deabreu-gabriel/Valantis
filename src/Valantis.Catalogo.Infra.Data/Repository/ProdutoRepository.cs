@@ -4,7 +4,7 @@ using System.Linq;
 using Valantis.Catalogo.Domain.Entities;
 using Valantis.Catalogo.Domain.Interfaces;
 
-namespace Valantis.Catalogo.Infra.Data.Repositories
+namespace Valantis.Catalogo.Infra.Data.Repository
 {
     public class ProdutoRepository : IProdutoRepository
     {
@@ -28,6 +28,11 @@ namespace Valantis.Catalogo.Infra.Data.Repositories
         public Produto ObterPorId(Guid id)
         {
             return _produtos.FirstOrDefault(p => p.Id == id);
+        }
+
+        public void Adicionar(Produto produto)
+        {
+            _produtos.Add(produto);
         }
 
         public void Dispose()

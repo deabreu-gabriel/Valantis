@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Valantis.Catalogo.Application.ViewModels;
 
 namespace Valantis.Catalogo.Application.Interfaces
@@ -8,5 +9,7 @@ namespace Valantis.Catalogo.Application.Interfaces
     {
         IEnumerable<ProdutoViewModel> ObterTodos();
         ProdutoViewModel ObterPorId(Guid id);
+
+        Task Adicionar(ProdutoViewModel produtoViewModel);
     }
 }

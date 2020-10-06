@@ -8,5 +8,7 @@ namespace Valantis.Catalogo.Domain.Interfaces
     {
         IEnumerable<Produto> ObterTodos();
         Produto ObterPorId(Guid id);
+
+        void Adicionar(Produto produto);
     }
 }
