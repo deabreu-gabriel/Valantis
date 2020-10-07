@@ -8,7 +8,7 @@ using Valantis.Catalogo.Application.ViewModels;
 using Valantis.Catalogo.Domain.Messaging;
 using Xunit;
 
-namespace Valantis.Cadastros.Api.Tests.Controllers
+namespace Valantis.Catalogo.Api.Tests.Controllers
 {
     public class ProdutoControllerTests
     {
