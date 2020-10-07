@@ -38,9 +38,9 @@ namespace Valantis.Catalogo.Application.Tests.Services
             _produtoAppService = new ProdutoAppService(mapper, mediatorHandler.Object, produtoRepository.Object); 
         }
 
-        [Fact(DisplayName = "ObterTodos deve obter e mapear produtos")]
+        [Fact(DisplayName = "ObterTodosProdutos_DeveExecutarComSucesso")]
         [Trait("Categoria", "Catálogo - ProdutoAppService")]
-        public void ObterTodos_DeveObterEMapearProdutos()
+        public void ObterTodosProdutos_DeveExecutarComSucesso()
         {
             // Arrange
             var produtos = new List<Produto>()
@@ -60,9 +60,9 @@ namespace Valantis.Catalogo.Application.Tests.Services
             Assert.Equal(3, result.Count());
         }
 
-        [Fact(DisplayName = "ObterPorId deve obter e mapear produto")]
+        [Fact(DisplayName = "ObterProdutoPorId_DeveExecutarComSucesso")]
         [Trait("Categoria", "Catálogo - ProdutoAppService")]
-        public void ObterPorId_DeveObterEMapearProduto()
+        public void ObterProdutoPorId_DeveExecutarComSucesso()
         {
             // Arrange
             var produto = new Produto(Guid.NewGuid(), "Produto 1");
@@ -80,9 +80,9 @@ namespace Valantis.Catalogo.Application.Tests.Services
             Assert.Equal(produto.Nome, result.Nome);
         }
 
-        [Fact(DisplayName = "Adicionar deve publicar notificação quando nome estiver vazio")]
+        [Fact(DisplayName = "AdicionarProduto_DevePublicarDomainNotification_QuandoNomeVazio")]
         [Trait("Categoria", "Catálogo - ProdutoAppService")]
-        public async Task Adicionar_DevePublicarDomainNotification_QuandoNomeVazio()
+        public async Task AdicionarProduto_DevePublicarDomainNotification_QuandoNomeVazio()
         {
             // Arrange
             var produtoViewModel = new ProdutoViewModel
@@ -100,9 +100,9 @@ namespace Valantis.Catalogo.Application.Tests.Services
                     Times.Once);
         }
 
-        [Fact(DisplayName = "Adicionar deve enviar comando quando estiver valido")]
+        [Fact(DisplayName = "AdicionarProduto_DeveEnviarCommand_QuandoEstiverValido")]
         [Trait("Categoria", "Catálogo - ProdutoAppService")]
-        public async Task Adicionar_DeveEnviarCommand_QuandoEstiverValido()
+        public async Task AdicionarProduto_DeveEnviarCommand_QuandoEstiverValido()
         {
             // Arrange
             var produtoViewModel = new ProdutoViewModel
